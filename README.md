@@ -25,3 +25,5 @@
   
   git reset --hard origin dev//将GitHub上的代码复制到工控机上
   
+### PopWilCacher
+该压缩包是配置文件，包括参数数据（控制参数、系统参数、通道参数）、地震波参考数据、实验数据等
