@@ -5,6 +5,7 @@
 #include "constvar.h"
 #include "bdaqctrl.h"
 
+extern double g_Acc;
 class AiStreaming
 {
 public:
@@ -14,7 +15,6 @@ public:
     void configure();
     void start();
     void stop();
-    void clearBufferAiCount();
     double getAcc();
 
     static void BDAQCALL OnDataReadyEvent(void * sender, BfdAiEventArgs * args, void * userParam);
@@ -22,10 +22,7 @@ public:
     static void BDAQCALL OnCacheOverflowEvent(void * sender, BfdAiEventArgs * args, void * userParam);
     static void BDAQCALL OnStoppedEvent(void * sender, BfdAiEventArgs * args, void * userParam);
 private:
-    double scaledData[100];
-    double bufferAi[100];//将每次OnDataReadyEvent中采集的数据计算平均值，放入buffer数组
-    int bufferAiCount;
-    double preAcc;
+    double scaledData[5000];
 
     WaveformAiCtrl *waveformAiCtrl;
     ConfigureParameterAI para;
